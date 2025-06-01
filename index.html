@@ -33,6 +33,21 @@
     #tabs ul li {
       margin: 0;
     }
+  #tabs ul li {
+  flex: 0 1 auto;
+	}
+
+   #tabs ul {
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap; /* <-- Add this line */
+  border-radius: 8px 8px 0 0;
+}
+
     #tabs ul li a {
       display: block;
       color: #0066cc;
@@ -87,6 +102,13 @@
       margin-bottom: 1em;
       border-radius: 8px;
     }
+ @media (max-width: 600px) {
+  #tabs ul li a {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
   </style>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
