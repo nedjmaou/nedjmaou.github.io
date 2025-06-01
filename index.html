@@ -1,77 +1,98 @@
-<?xml version="1.0" encoding="utf8"?>
-<HTML xmlns="http://www.w3.org/1999/xhtml">
-<HEAD>
-  <TITLE>Nedjma Ousidhoum</TITLE>
-  <META http-equiv=Content-Type content="text/html; charset=utf8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nedjma Djouhra Ousidhoum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .main {
+      max-width: 1000px;
+      margin: auto;
+    }
+    #tabs ul {
+      list-style-type: none;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+    #tabs ul li {
+      float: left;
+    }
+    #tabs ul li a {
+      display: block;
+      color: #000;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      border-right: 1px solid #ccc;
+    }
+    #tabs ul li a:hover {
+      background-color: #ddd;
+    }
+    #tabs > div {
+      display: none;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+    #tabs > div.active {
+      display: block;
+    }
+  </style>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const tabs = document.querySelectorAll("#tabs ul li a");
+      const contents = document.querySelectorAll("#tabs > div");
+      
+      function activateTab(hash) {
+        contents.forEach(div => {
+          div.classList.remove("active");
+          if ("#" + div.id === hash) {
+            div.classList.add("active");
+          }
+        });
+      }
 
-<style>
-body {
-  font-family: "Verdana, Geneva, sans-serif";
-  color: #444444;  
-  font-size: 9pt;
-}
+      tabs.forEach(tab => {
+        tab.addEventListener("click", (e) => {
+          e.preventDefault();
+          activateTab(tab.getAttribute("href"));
+          history.pushState(null, null, tab.getAttribute("href"));
+        });
+      });
 
-.sidenav {
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #FFFFFF;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
+      // Activate default or hash tab
+      const initialHash = window.location.hash || "#about";
+      activateTab(initialHash);
+    });
+  </script>
+</head>
+<body xml:lang="en">
+  <div class="main">
+    <div id="tabs">
+      <ul>
+        <li><a href="#about">About me</a></li>
+        <li><a href="#academics">Academic Experience</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+      </ul>
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
+      <!-- Your provided content below starts here -->
+      <!-- All your divs: #about, #academics, #publications, #talks, #teaching -->
+      <!-- (You already wrote and provided them — they are placed here unchanged) -->
+      <!-- Just paste that full <div id="about">... to the end of your HTML body -->
+      
+      <!-- Paste your original #about, #academics, #publications, #talks, and #teaching divs below this line -->
+      <!-- For brevity, not repeating them in this message -->
+      <!-- They must go *inside* this #tabs div -->
 
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-div { text-align: justify; }
-
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 20px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
-
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-  $( function() {
-    $( "#tabs" ).tabs();
-  } );
-</script>
-
-</HEAD>
-
-<BODY xml:lang="en">
-<div class="main">
-<div id="tabs">
-  <ul>
-    <li><a href="#about">About me</a></li>
-    <li><a href="#academics">Academic Experience</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#talks">Talks</a></li>
-    <li><a href="#teaching">Teaching</a></li>
-  </ul>
- <div id="about">
+      <!-- Paste here -->
+	    <div id="about">
   <IMG alt=photo  src="photo.jpg" align=right border=0 style="width: 20%;" />
   <H1>Nedjma Djouhra Ousidhoum <span lang="ar">نجمة جوهرة أوسيدهم </span></H1>
   <H4> Lecturer (Assistant Professor)</H4> 
@@ -91,8 +112,6 @@ div { text-align: justify; }
 <a href="https://clustrmaps.com/site/1bdtz"  title="Visitors"><img src="//www.clustrmaps.com/map_v2.png?d=LkHfHSieIpM6H1tV4qpu71aRYguqcry5O8CZekUd9UA&cl=ffffff" /></a>	
 </p>
 </div>
-
-
 <div id="academics">
   <h3>Education</h3>
   <ul>
@@ -268,7 +287,5 @@ Shamsuddeen Hassan Muhammad, Idris Abdulmumin, Seid Muhie Yimam, David Ifeoluwa 
 <i>Normalizing the Experimental Design of Multilingual Hate Speech Detection.</i> Group Seminar of the Digital Technologies Research Center (National Research Council, Canada). November 2020. </li> 
 <br>
 </div>
-
-</BODY>
-    
-</HTML>
+</body>
+</html>
