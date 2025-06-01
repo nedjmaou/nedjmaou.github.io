@@ -1,174 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Nedjma Ousidhoum - Webpage</title>
+  <meta charset="UTF-8" />
+  <title>Nedjma Djouhra Ousidhoum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-	  
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 40px;
       line-height: 1.6;
       color: #333;
       background-color: #f9f9f9;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    h3 {
+    h1, h3 {
       color: #2a2a2a;
       border-bottom: 2px solid #ccc;
       padding-bottom: 5px;
       margin-top: 40px;
-    }
-
-    ul {
-      list-style-type: disc;
-      margin-left: 20px;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
-    a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    #academics, #teaching, #publications, #talks {
-      background: #fff;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-
-    b {
-      color: #000;
-    }
-
-    i {
-      color: #444;
-    }
-
-    br {
-      line-height: 2;
-    }
-   #tabs > section {
-    display: none;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-top: none;
-  }
-  #tabs > section.active {
-    display: block;
-  }
-</style>
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const tabs = document.querySelectorAll("#tabs ul li a");
-    const contents = document.querySelectorAll("#tabs > section");
-    
-    function activateTab(hash) {
-      contents.forEach(section => {
-        section.classList.remove("active");
-        if ("#" + section.id === hash) {
-          section.classList.add("active");
-        }
-      });
-    }
-
-    tabs.forEach(tab => {
-      tab.addEventListener("click", (e) => {
-        e.preventDefault();
-        activateTab(tab.getAttribute("href"));
-        history.pushState(null, null, tab.getAttribute("href"));
-      });
-    });
-
-    // Activate default or hash tab
-    const initialHash = window.location.hash || "#about";
-    activateTab(initialHash);
-  });
-</script>
-
-<div id="tabs">
-  <ul>
-    <li><a href="#about">About me</a></li>
-    <li><a href="#academics">Academic Experience</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#talks">Talks</a></li>
-    <li><a href="#teaching">Teaching</a></li>
-  </ul>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Nedjma Djouhra Ousidhoum</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    .main {
-      max-width: 1000px;
-      margin: auto;
     }
     #tabs ul {
       list-style-type: none;
       padding: 0;
       overflow: hidden;
       background-color: #f1f1f1;
+      margin: 0;
+      display: flex;
+      border-radius: 8px 8px 0 0;
     }
     #tabs ul li {
-      float: left;
+      margin: 0;
     }
     #tabs ul li a {
       display: block;
-      color: #000;
+      color: #0066cc;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
       border-right: 1px solid #ccc;
+      font-weight: 600;
+      border-radius: 8px 8px 0 0;
     }
-    #tabs ul li a:hover {
+    #tabs ul li a:hover,
+    #tabs ul li a.active {
       background-color: #ddd;
+      color: #000;
+      text-decoration: underline;
     }
-    #tabs > div {
+    #tabs > section {
       display: none;
       padding: 20px;
       border: 1px solid #ccc;
       border-top: none;
+      background: #fff;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-    #tabs > div.active {
+    #tabs > section.active {
       display: block;
+    }
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    address {
+      font-style: normal;
+      margin-bottom: 1em;
+      color: #555;
+    }
+    img {
+      max-width: 200px;
+      height: auto;
+      display: block;
+      margin-bottom: 1em;
+      border-radius: 8px;
     }
   </style>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       const tabs = document.querySelectorAll("#tabs ul li a");
-      const contents = document.querySelectorAll("#tabs > div");
+      const contents = document.querySelectorAll("#tabs > section");
       
       function activateTab(hash) {
-        contents.forEach(div => {
-          div.classList.remove("active");
-          if ("#" + div.id === hash) {
-            div.classList.add("active");
-          }
+        contents.forEach(section => {
+          section.classList.remove("active");
         });
+        tabs.forEach(tab => {
+          tab.classList.remove("active");
+        });
+        const activeContent = document.querySelector(hash);
+        const activeTab = document.querySelector(`#tabs ul li a[href="${hash}"]`);
+        if (activeContent && activeTab) {
+          activeContent.classList.add("active");
+          activeTab.classList.add("active");
+        }
       }
 
       tabs.forEach(tab => {
-        tab.addEventListener("click", (e) => {
+        tab.addEventListener("click", e => {
           e.preventDefault();
-          activateTab(tab.getAttribute("href"));
-          history.pushState(null, null, tab.getAttribute("href"));
+          const hash = tab.getAttribute("href");
+          activateTab(hash);
+          history.pushState(null, null, hash);
         });
       });
 
@@ -178,76 +123,73 @@
     });
   </script>
 </head>
-<body xml:lang="en">
-  <div class="main">
-    <div id="tabs">
+<body>
+  <div id="tabs">
+    <ul>
+      <li><a href="#about">About me</a></li>
+      <li><a href="#academics">Academic Experience</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+    </ul>
+
+    <section id="about">
+      <h1>Nedjma Djouhra Ousidhoum <span lang="ar">نجمة جوهرة أوسيدهم</span></h1>
+      <img src="photo.jpg" alt="Nedjma Djouhra Ousidhoum" />
+      <h4>Lecturer (Assistant Professor)</h4>
+      <address>OusidhoumN (at) cardiff (dot) ac (dot) uk</address>
+      <address>Office 5.50 Abacws building, Cardiff.</address>
+      <p>
+        I am a Lecturer (Assistant Professor) at <a href="https://www.cardiff.ac.uk/computer-science/">the School of Computer Science and Informatics</a> at Cardiff University. I lead the <a href="https://cardiffnlp.github.io">Cardiff NLP Group</a> and am also a Visiting Academic at the University of Cambridge.
+      </p>
+      <p>
+        Previously, I was a Postdoctoral Research Associate at the University of Cambridge, working with <a href="http://andreasvlachos.github.io/">Andreas Vlachos</a>. I completed my PhD at the Hong Kong University of Science and Technology (HKUST), supervised by <a href="http://www.cse.ust.hk/~yqsong/">Yangqiu Song</a> and <a href="https://www.cse.ust.hk/admin/people/faculty/profile/dyyeung">Dit-Yan Yeung</a>.
+      </p>
+      <p>
+        My research focuses on Natural Language Processing and Computational Social Science, particularly in automated fact-checking, toxic content detection, and low-resource languages.
+        For more, see my <a href="nousidhoum_resume.pdf">curriculum vitae</a> or my <a href="https://scholar.google.com/citations?hl=en&user=6ZZtzmQAAAAJ">Google Scholar</a>.
+      </p>
+      <p>
+        You can find me on 
+        <a href="https://twitter.com/nedjmaou">Twitter/X</a>, 
+        <a href="https://bsky.app/profile/nedjmaou-nlp.bsky.social">BlueSky</a>, and 
+        <a href="https://www.linkedin.com/in/nedjma-ousidhoum-67763365/">LinkedIn</a>.
+      </p>
+      <p>
+        <a href="https://clustrmaps.com/site/1bdtz" title="Visitors">
+          <img src="//www.clustrmaps.com/map_v2.png?d=LkHfHSieIpM6H1tV4qpu71aRYguqcry5O8CZekUd9UA&cl=ffffff" alt="Visitor map" />
+        </a>
+      </p>
+    </section>
+
+    <section id="academics">
+      <h3>Education</h3>
       <ul>
-        <li><a href="#about">About me</a></li>
-        <li><a href="#academics">Academic Experience</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#talks">Talks</a></li>
-        <li><a href="#teaching">Teaching</a></li>
+        <li>2014–2021: PhD in Computer Science, HKUST, Hong Kong.</li>
+        <li>2010–2012: Master in Software Engineering, USTHB, Algeria.</li>
+        <li>2007–2010: Bachelor in Computer Science, USTHB, Algeria.</li>
       </ul>
 
-      <!-- Your provided content below starts here -->
-      <section id="about">
-<h1>Nedjma Djouhra Ousidhoum <span lang="ar">نجمة جوهرة أوسيدهم</span></h1>
-<img src="photo.jpg" alt="photo" style="max-width:200px; height:auto; display:block; margin-bottom:1em;">
-<h4>Lecturer (Assistant Professor)</h4>
-<address>OusidhoumN (at) cardiff (dot) ac (dot) uk</address>
-<address>Office 5.50 Abacws building, Cardiff.</address>
-<p>
-  I am a Lecturer (Assistant Professor) at <a href="https://www.cardiff.ac.uk/computer-science/">the School of Computer Science and Informatics</a> at Cardiff University. I lead the <a href="https://cardiffnlp.github.io">Cardiff NLP Group</a> and am also a Visiting Academic at the University of Cambridge.
-</p>
-<p>
-  Previously, I was a Postdoctoral Research Associate at the University of Cambridge, working with <a href="http://andreasvlachos.github.io/">Andreas Vlachos</a>. I completed my PhD at the Hong Kong University of Science and Technology (HKUST), supervised by <a href="http://www.cse.ust.hk/~yqsong/">Yangqiu Song</a> and <a href="https://www.cse.ust.hk/admin/people/faculty/profile/dyyeung">Dit-Yan Yeung</a>.
-</p>
-<p>
-  My research focuses on Natural Language Processing and Computational Social Science, particularly in automated fact-checking, toxic content detection, and low-resource languages.
-  For more, see my <a href="nousidhoum_resume.pdf">curriculum vitae</a> or my <a href="https://scholar.google.com/citations?hl=en&user=6ZZtzmQAAAAJ">Google Scholar</a>.
-</p>
-<p>
-  You can find me on 
-  <a href="https://twitter.com/nedjmaou">Twitter/X</a>, 
-  <a href="https://bsky.app/profile/nedjmaou-nlp.bsky.social">BlueSky</a>, and 
-  <a href="https://www.linkedin.com/in/nedjma-ousidhoum-67763365/">LinkedIn</a>.
-</p>
-<p>
-  <a href="https://clustrmaps.com/site/1bdtz" title="Visitors">
-    <img src="//www.clustrmaps.com/map_v2.png?d=LkHfHSieIpM6H1tV4qpu71aRYguqcry5O8CZekUd9UA&cl=ffffff" alt="Visitor map" />
-  </a>	
-</p>
+      <h3>Academic Services</h3>
+      <ul>
+        <li>Senior Area Chair at ACL 2025 (Multilinguality and Cross-Lingual NLP).</li>
+        <li>Area Chair at COLING 2025 (Ethics and Bias).</li>
+        <li>Action Editor at ACL Rolling Review; Area Chair at EMNLP 2024.</li>
+        <li>Reviewer for <em>Computational Linguistics</em> and OSNEM journals.</li>
+        <li>Area Chair (Low-resource and Endangered Languages) at LREC-COLING 2024.</li>
+        <li>Area Chair (Ethics in NLP) at EACL 2024.</li>
+        <li>Senior Area Chair at EMNLP 2023 (Outstanding SAC Award).</li>
+        <li>Diversity and Inclusion Chair at <a href="https://2023.aclweb.org/calls/main_conference/">ACL 2023</a>; see blogpost on visa statistics <a href="https://medium.com/@nedjma.ousidhoum/the-visa-situation-at-acl-2023-77e39e9e995d">here</a>.</li>
+        <li>Financial Accessibility Chair (part of D&I) at <a href="https://2022.naacl.org/">NAACL 2022</a>.</li>
+        <li>Reviewer for ACL Rolling Review and major *CL 2019–2022 conferences (ACL/EMNLP/..).</li>
+        <li>Co-organiser, <a href="https://sites.google.com/view/NorthAfricansInNLP">North Africans in NLP</a> affinity group (2020–2022).</li>
+      </ul>
+    </section>
 
-
-	</section>
-      <section id="academics">
- 	 <h3>Education</h3>
-  	<ul>
-    	<li>2014–2021: PhD in Computer Science, HKUST, Hong Kong.</li>
-    	<li>2010–2012: Master in Software Engineering, USTHB, Algeria.</li>
-    	<li>2007–2010: Bachelor in Computer Science, USTHB, Algeria.</li>
- 	 </ul>
-
-  	<h3>Academic Services</h3>
-  	<ul>
-    	<li>Senior Area Chair at ACL 2025 (Multilingualism and Cross-Lingual NLP).</li>
-    	<li>Area Chair at COLING 2025 (Ethics and Bias).</li>
-    	<li>Action Editor at ACL Rolling Review; Area Chair at EMNLP 2024.</li>
-    	<li>Reviewer for *Computational Linguistics* and *OSNEM* journals.</li>
-    	<li>Area Chair (Less-studied Languages) at LREC-COLING 2024.</li>
-    	<li>Area Chair (Ethics in NLP) at EACL 2024.</li>
-    	<li>Senior Area Chair at EMNLP 2023 (Outstanding Award).</li>
-    	<li>Diversity and Inclusion Chair at <a href="https://2023.aclweb.org/calls/main_conference/">ACL 2023</a>; see blogpost on visa statistics <a href="https://medium.com/@nedjma.ousidhoum/the-visa-situation-at-acl-2023-77e39e9e995d">here</a>.</li>
-    	<li>Financial Accessibity Chair (part of D&I) at <a href="https://2022.naacl.org/">NAACL 2022</a>.</li>
-    	<li>Reviewer for ACL Rolling Review and major *CL 2019–2022 conferences.</li>
-    	<li>Co-organiser, <a href="https://sites.google.com/view/NorthAfricansInNLP">North Africans in NLP</a> affinity group (2020–2022).</li>
-  	</ul>
-	</section>
-
-	<section id="teaching">
-  	<h3>Teaching</h3>
-  	<ul>
-   	 <li>Spring 2025: CM3202 (Emerging Technologies), Cardiff University (Co-taught).</li>
+    <section id="teaching">
+      <h3>Teaching</h3>
+      <ul>
+          <li>Spring 2025: CM3202 (Emerging Technologies), Cardiff University (Co-taught).</li>
   	  <li>Fall 2024: CMT122 (Machine Learning for NLP), Cardiff University. <a href="https://github.com/nedjmaou/CMT122-2425-Resources">Resources</a></li>
   	  <li>Spring 2024: CM3202 (Emerging Technologies), Cardiff University.</li>
   	  <li>Fall 2022: Supervisor, Object-Oriented Programming, University of Cambridge.</li>
@@ -259,10 +201,6 @@
  	 </ul>
 	</section>
 	<section id="publications">
-		<style>
-  	a { color: #1a73e8; text-decoration: none; }
-  	a:hover { text-decoration: underline; }
-	</style>
  	 <h3>Publications</h3>
 	<b>Nedjma Ousidhoum</b>, Meriem Beloucif, Saif M. Mohammad: Building Better: Avoiding Pitfalls in Developing Language Resources when Data is Scarce. <b>(Accepted at ACL2025 [Main Conference])</b> [<a href="https://arxiv.org/abs/2410.12691">Preprint</a>]
 <br>
@@ -375,6 +313,6 @@ Shamsuddeen Hassan Muhammad, Idris Abdulmumin, Seid Muhie Yimam, David Ifeoluwa 
 <i>Normalizing the Experimental Design of Multilingual Hate Speech Detection.</i> Group Seminar of the Digital Technologies Research Center (National Research Council, Canada). November 2020. </li> 
 <br>
 </section>
-    </div>	    
- </body>
+</div>	    
+</body>
 </html>
