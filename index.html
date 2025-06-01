@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nedjma Ousidhoum - Academic Profile</title>
+  <title>Nedjma Ousidhoum - Webpage</title>
   <style>
+	  
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 40px;
@@ -56,13 +57,52 @@
     br {
       line-height: 2;
     }
-  </style>
-</head>
-<body>
+   #tabs > section {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  #tabs > section.active {
+    display: block;
+  }
+</style>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll("#tabs ul li a");
+    const contents = document.querySelectorAll("#tabs > section");
+    
+    function activateTab(hash) {
+      contents.forEach(section => {
+        section.classList.remove("active");
+        if ("#" + section.id === hash) {
+          section.classList.add("active");
+        }
+      });
+    }
 
+    tabs.forEach(tab => {
+      tab.addEventListener("click", (e) => {
+        e.preventDefault();
+        activateTab(tab.getAttribute("href"));
+        history.pushState(null, null, tab.getAttribute("href"));
+      });
+    });
 
-</body>
-</html>
+    // Activate default or hash tab
+    const initialHash = window.location.hash || "#about";
+    activateTab(initialHash);
+  });
+</script>
+
+<div id="tabs">
+  <ul>
+    <li><a href="#about">About me</a></li>
+    <li><a href="#academics">Academic Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#talks">Talks</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+  </ul>
 
 
 <!DOCTYPE html>
@@ -334,6 +374,7 @@ Shamsuddeen Hassan Muhammad, Idris Abdulmumin, Seid Muhie Yimam, David Ifeoluwa 
 <br>
 <i>Normalizing the Experimental Design of Multilingual Hate Speech Detection.</i> Group Seminar of the Digital Technologies Research Center (National Research Council, Canada). November 2020. </li> 
 <br>
-	</section>
+</section>
+    </div>	    
  </body>
 </html>
